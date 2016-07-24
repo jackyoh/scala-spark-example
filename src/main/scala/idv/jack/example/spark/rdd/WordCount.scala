@@ -5,10 +5,10 @@ object WordCount {
   
   def main(args: Array[String]){
        val sparkConf = new SparkConf().setAppName("Word Count Test")
-                                      .setMaster("local")
+                                      //.setMaster("local")
                                       
        val sc = new SparkContext(sparkConf)
-       val sourceRDD = sc.textFile("/home/user1/wordcount.txt")
+       val sourceRDD = sc.textFile("/wordcount.txt")
        
        val flatMapRDD = sourceRDD.flatMap(f => f.split(" "))
        val mapToPairRDD = flatMapRDD.map(word => (word, 1))
